@@ -62,9 +62,28 @@ public class BackgroundPropSpawner : MonoBehaviour
         // 继续 延时加载一个 Prefab
         StartCoroutine(Spawn());
 
+        // 当 Prefabs 到达一定范围后 应将其 Destroy
+        // 通过 x轴坐标判断
+        while (propInstance != null)
+        {
+            if (facingLeft)
+            {
+                if (propInstance.transform.position.x - leftSpawnPosX < -0.5f)
+                {
+                    Destroy(propInstance.gameObject);
+                }
+            }
+            else
+            {
+                if (propInstance.transform.position.x - rightSpawnPosX > 0.5f)
+                {
+                    Destroy(propInstance.gameObject);
+                }
+            }
 
-
-        yield return null;
+            // 一定要加 yield return,要不然会循环
+            yield return null;
+        }
     }
 
     private void Flip(Rigidbody2D instatnce)
