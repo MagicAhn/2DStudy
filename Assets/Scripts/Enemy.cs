@@ -108,6 +108,21 @@ public class Enemy : MonoBehaviour
         this.gameObject.rigidbody2D.fixedAngle = false;
         this.gameObject.rigidbody2D.AddTorque(UnityEngine.Random.Range(deathSpinMin, deathSpinMax));
 
-        //
+        // A trigger doesn't collide with rigid bodies. Instead it sends OnTriggerEnter, OnTriggerExit and OnTriggerStay message when a rigidbody enters or exits the trigger.
+        // 这样 Enemy就可以受 Gravity影响 掉下来了
+        var colliders = this.gameObject.GetComponents<Collider2D>();
+        foreach (var col in colliders)
+        {
+            col.isTrigger = true;
+        }
+
+        // 播放一段音效
+        var clipIndex = UnityEngine.Random.Range(0, deathClips.Length);
+        AudioSource.PlayClipAtPoint(deathClips[clipIndex],this.gameObject.transform.position);
+
+        // 在 Enemy头顶显示一个分数，并过一段时间消失
+        Vector3 scorePos = this.gameObject.transform.position;
+        scorePos.y += 1.5f;
+        // 在 scorePos出实例化一个 score
     }
 }
