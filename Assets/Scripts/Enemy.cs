@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour
         // Enemy 的移动速度
         this.gameObject.rigidbody2D.velocity = new Vector2(this.gameObject.transform.localScale.x * moveSpeed, this.gameObject.rigidbody2D.velocity.y);
 
+
         // Enemy的 frontCheck前方 1位置的所有 可以碰撞检测器
         Collider2D[] frontHits = Physics2D.OverlapPointAll(frontCheck.position, 1);
 
@@ -118,7 +119,7 @@ public class Enemy : MonoBehaviour
 
         // 播放一段音效
         var clipIndex = UnityEngine.Random.Range(0, deathClips.Length);
-        AudioSource.PlayClipAtPoint(deathClips[clipIndex],this.gameObject.transform.position);
+        AudioSource.PlayClipAtPoint(deathClips[clipIndex], this.gameObject.transform.position);
 
         // 在 Enemy头顶显示一个分数，并过一段时间消失
         Vector3 scorePos = this.gameObject.transform.position;
