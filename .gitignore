@@ -25,6 +25,8 @@ local.properties
 # CDT-specific
 .cproject
 
+Library/
+Temp/
 # PDT-specific
 .buildpath
 
@@ -213,3 +215,9 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+
+2DStudy-csharp.sln
+2DStudy.sln
+Assembly-CSharp-vs.csproj
+Assembly-CSharp.csproj
