@@ -40,9 +40,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400006}
   - 50: {fileID: 5000000}
-  - 114: {fileID: 11400000}
   - 58: {fileID: 5800000}
   - 95: {fileID: 9500000}
+  - 114: {fileID: 11400000}
   m_Layer: 10
   m_Name: enemy2
   m_TagString: Enemy
@@ -133,18 +133,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 100006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef474d77e998d4890bff85103fb4c947, type: 3}
+  m_Script: {fileID: 11500000, guid: 9201be43bf2640240b669c354108283c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 6
   HP: 2
-  deadEnemy: {fileID: 21300000, guid: 73fa5f80d4ddd4196b767cc01c1b5c68, type: 3}
-  damagedEnemy: {fileID: 21300000, guid: bc16422a503ec43cab4ad9ddab02ff7a, type: 3}
+  deadEnemy: {fileID: 0}
+  damagedEnemy: {fileID: 0}
+  deathSpinMin: -100
+  deathSpinMax: 100
   deathClips:
   - {fileID: 8300000, guid: 039514349165244c6a43be5c3070d14b, type: 3}
   - {fileID: 8300000, guid: 85020549641fa452d9136ac2fc852efd, type: 3}
   - {fileID: 8300000, guid: 2e20b5071623f44cf9c72acf016de4b6, type: 3}
-  hundredPointsUI: {fileID: 100006, guid: 31974361bc9e44fb18c77b64a4cb3bbd, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

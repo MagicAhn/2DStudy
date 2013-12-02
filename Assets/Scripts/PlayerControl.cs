@@ -56,7 +56,7 @@ public class PlayerControl : MonoBehaviour
         // jump 后 
         if (jump)
         {
-            // 触犯 Jump 动画
+            // 触犯 Jump 动画 的 触发参数
             anim.SetTrigger("Jump");
 
             // 向上 加力 
