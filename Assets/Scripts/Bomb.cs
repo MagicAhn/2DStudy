@@ -18,10 +18,12 @@ public class Bomb : MonoBehaviour
     public GameObject explosion;
 
     private ParticleSystem explosionFX;
+    private PickupSpawner pickupSpawner;
 
     void Awake()
     {
         explosionFX = GameObject.FindGameObjectWithTag("ExplosionFX").GetComponent<ParticleSystem>();
+        pickupSpawner = GameObject.Find("pickupManager").GetComponent<PickupSpawner>();
     }
 
     // Use this for initialization
@@ -54,6 +56,7 @@ public class Bomb : MonoBehaviour
         // 如果 player 有炸弹，表示 还没有扔炸弹，可以随时扔了
 
         // 开始 下一个 延时加载生产 Pickup
+        StartCoroutine(pickupSpawner.DeliverPickup());
 
         // 计算 爆炸范围内的 Enemy层上所有的 Collider
         Collider2D[] colliders = Physics2D.OverlapCircleAll(this.gameObject.transform.position, bombRadius, 1 << LayerMask.NameToLayer("Enemies"));
