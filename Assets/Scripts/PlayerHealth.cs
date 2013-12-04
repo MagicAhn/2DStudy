@@ -47,10 +47,10 @@ public class PlayerHealth : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         // 如果碰到的是 Enemy
-        if (other.tag.Equals("Enemy"))
+        if (other.gameObject.tag.Equals("Enemy"))
         {
             // 当攻击间隔 一定的时间后，伤害计数
             if (Time.time > lastHitTime + repeatDamagePeriod)
@@ -90,7 +90,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void TakeDamage(Collider2D other)
+    private void TakeDamage(Collision2D other)
     {
         // 受到伤害
         // Player 不能继续 jump
