@@ -22,6 +22,7 @@ public class PlayerControl : MonoBehaviour
     public Animator anim;
     // 判断是否着陆
     private Boolean grounded = false;
+    private Int32 tauntIndex;
 
     void Awake()
     {
@@ -64,7 +65,7 @@ public class PlayerControl : MonoBehaviour
 
             // 播放一段音频
             Int32 index = new Random().Next(0, jumpClips.Length);
-            AudioSource.PlayClipAtPoint(jumpClips[index],transform.position);
+            AudioSource.PlayClipAtPoint(jumpClips[index], transform.position);
 
             // 加完力后，把 jump 设置为 false
             jump = false;
@@ -105,6 +106,38 @@ public class PlayerControl : MonoBehaviour
         Vector3 theScale = this.gameObject.transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    public IEnumerator Taunt()
+    {
+        // 嘲讽几率
+        Single tauntChance = UnityEngine.Random.Range(0f, 100f);
+        if (tauntChance>tauntProbability)
+        {
+            yield return new WaitForSeconds(tauntDelay);
+
+            // 如果没有 clip 在 playing
+            if (!audio.isPlaying)
+            {
+                tauntIndex = TauntRandom();
+
+                audio.clip = taunts[tauntIndex];
+                audio.Play();
+            }
+        }
+    }
+
+    private Int32 TauntRandom()
+    {
+        Int32 index = UnityEngine.Random.Range(0, taunts.Length);
+        if (index == tauntIndex)
+        {
+            return TauntRandom();
+        }
+        else
+        {
+            return index;
+        }
     }
 }
 

@@ -108,7 +108,7 @@ public class PlayerHealth : MonoBehaviour
         AudioSource.PlayClipAtPoint(OuchClips[clipIndex], transform.position);
     }
 
-    private void UpdateHealthBar()
+    public void UpdateHealthBar()
     {
         // 更新血条（颜色与大小）
         healthBar.material.color = Color.Lerp(Color.green, Color.red, 1 - health * 0.01f);
